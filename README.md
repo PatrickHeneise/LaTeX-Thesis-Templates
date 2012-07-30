@@ -9,6 +9,10 @@ History MA Thesis
 
 Compiles on MacTeX 2012 with biber installed. It uses chicaco style citations in footnotes. The first mention to a citation is always a full citation, following citations are only the author name and the number to the full citation. This can be easily changed to Ibit. and Ibidem. by using verbose-ibid option instead of verbose-note. Have a look at p.73, [biblatex]([ftp://www.ctan.org/ctan/macros/latex/exptl/biblatex/doc/biblatex.pdf)
 
+To create the index for nomenclature, use this command: 
+
+`makeindex Thesis.nlo -s nomencl.ist -o Thesis.nls`
+
 Feel free to add more templates for other students to use or modifications of the History template.
 
 
