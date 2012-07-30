@@ -11,6 +11,7 @@ Compiles on latest MacTeX 2012 with [biber](http://biblatex-biber.sourceforge.ne
 
 To change to biker, in TeXShop go to Preferences -> Engine and change BibTeX engine to `biker`.
 
+
 To create the index for nomenclature, use this command: 
 
 `makeindex Thesis.nlo -s nomencl.ist -o Thesis.nls`
