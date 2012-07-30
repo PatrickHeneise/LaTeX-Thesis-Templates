@@ -1,0 +1,122 @@
+% \documentclass[a4paper,12pt,twoside,openright,numbers=noenddot]{scrreprt}
+\documentclass[a4paper,12pt,numbers=noenddot]{scrreprt}
+\addtokomafont{disposition}{\rmfamily}
+
+% Packages
+% ********************************************************************
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[english]{babel}
+\usepackage{setspace}
+\usepackage[pdftex]{graphicx}
+\usepackage{makeidx}
+\usepackage{xcolor}
+\usepackage[titletoc, title]{appendix}
+\usepackage[hyphens]{url}
+\makeatletter
+\def\url@mystyle{%
+  \@ifundefined{selectfont}{\def\UrlFont{\sf}}{\def\UrlFont{\small\ttfamily}}}
+\makeatother
+%% Now actually use the newly defined style.
+\urlstyle{my}
+\usepackage[format=plain,margin=15pt,parskip=5pt,font=small,indention=10pt]{caption}
+\DeclareCaptionType{map}[Map][List of Maps]
+\usepackage[
+	style=verbose-note,
+	abbreviate=true,
+	citetracker=context,
+	singletitle = true, 
+	pagetracker = true,
+	autocite=footnote,
+	backend=biber
+]{biblatex}
+
+\usepackage[intoc]{nomencl}\makenomenclature
+\renewcommand{\nomname}{List of Abbreviations} 
+\usepackage{csquotes} 
+\usepackage[final]{hyperref}
+
+%\bibliography{Bibliography} %BibTeX-Literaturdatei
+\addbibresource{bibliography.bib}
+
+\makeindex
+\clubpenalty = 10000 \widowpenalty = 10000 \displaywidowpenalty = 10000 %Gegen Schusterjungen und Hurenkinder
+
+\onehalfspacing
+\usepackage{chngcntr}
+\counterwithout{figure}{chapter}
+\counterwithout{table}{chapter}
+\counterwithout{map}{chapter}
+
+
+\hypersetup{
+	colorlinks,
+	citecolor=black,
+	filecolor=black,
+	linkcolor=black,
+	urlcolor=black,
+	pdftitle={Awesome Title},
+	pdfsubject={Subject},
+	pdfauthor={Your Name Here},
+	pdfkeywords={Some,Key,Words}
+}
+\hypersetup{linktocpage}
+
+\KOMAoptions{cleardoublepage=empty}
+
+\begin{document}
+\pagestyle{empty}
+
+ \include{Frontmatter/Title}
+
+\cleardoublepage
+
+\pagestyle{plain}
+ \include{Frontmatter/Abstract}
+ \cleardoublepage
+\pagenumbering{roman}
+\KOMAoptions{cleardoublepage=plain}
+ \cleardoublepage
+
+\tableofcontents
+
+\begingroup
+\renewcommand*{\addvspace}[1]{}
+\listoffigures
+\listofmaps
+\listoftables
+\endgroup
+
+\cleardoublepage
+
+\setcounter{secnumdepth}{-1}
+\pagenumbering{arabic}
+\pagestyle{headings}
+\parskip0.7ex
+% Main Content in Chapter folder
+% ********************************************************************
+\include{Chapters/0}
+\include{Chapters/1}
+\include{Chapters/Conclusion}
+
+\setcounter{secnumdepth}{1}
+\printnomenclature[3cm] 
+
+% Appendix
+% ********************************************************************
+\appendix
+\include{Backmatter/0A}
+\include{Backmatter/1A}
+\include{Backmatter/2A}
+
+% Bibliography
+% ********************************************************************
+\clearpage
+\addcontentsline{toc}{chapter}{Bibliography}
+\printbibheading
+\printbibliography[title={Newspaper Articles}, heading=subbibliography, keyword=primary, type=article]
+\printbibliography[title={Other Sources}, heading=subbibliography, notkeyword=primary]
+
+\addcontentsline{toc}{chapter}{Index}
+\printindex
+\end{document}
