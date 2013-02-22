@@ -1,0 +1,120 @@
+% **************************************************************************************************************
+% Thesis-Vorlage der Hochschule Furtwangen, Digitale Medien
+%
+% Basierend auf der Vorlage von Patrick Heneise; 2010 erweitert und angepasst von Martin Weber
+% **************************************************************************************************************
+
+\documentclass[a4paper,12pt,twoside,openright,numbers=noenddot]{scrreprt}
+\addtokomafont{disposition}{\rmfamily}
+
+% Packages
+% ********************************************************************
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc} % SUPER WICHTIG! Läd "neue" Schriften: Schönere Zeichen (»«), korrekte (!) Generierung von Sönderzeichen (wichtig bei copy&paste-Export: Der schlug sonst immer fehl). Ermöglicht außerdem korrekte Silbentrennung von Wörtern mit Ümläüten.
+\usepackage{textcomp} % Interrobang ftw!
+\usepackage[ngerman]{babel}
+\usepackage[pdftex]{graphicx}
+\usepackage{xcolor}
+\usepackage{scrpage2} 
+\usepackage[hyphens]{url}
+\usepackage{natbib}
+\usepackage{listings}
+\usepackage{makeidx}
+\usepackage{hyperref}
+\usepackage[final]{pdfpages}
+\usepackage{eurosym} % Fuer das Euro-Symbol mit \euro{}
+\usepackage[inner=3.2cm,outer=2.2cm,top=2cm,bottom=2cm,includeheadfoot]{geometry}
+\makeindex
+\setcounter{tocdepth}{3} % Tiefe des Inhaltsverzeichnisses (3; bis zu 1.1.1 runter)
+\setcounter{secnumdepth}{3} % Tiefe der Nummerierung innerhalb des Dokuments (3; bis zu 1.1.1 runter)
+\setcitestyle{aysep={,},citesep={;}}
+\usepackage{subfigure}  % Hiermit lassen sich mehrere Grafiken beinander anordnen,welche dann fortlaufend mit a, b usw. bezeichnet werden.
+\usepackage{amsmath} % Für die mathematische Darstellung der Formeln zur Preisberechnung
+\usepackage{listings} % Für die Quellcode-Darstellung, s. http://blog.robert-kummer.de/2006/04/latex-quellcode-listing.html
+\usepackage{multirow} % Für zusammenfassung von Reihen in Tabellen; s. http://andrewjpage.com/index.php?/archives/43-Multirow-and-multicolumn-spanning-with-latex-tables.html
+\usepackage{rotating} % Zur Rotation von Elementen
+\clubpenalty = 10000 \widowpenalty = 10000 \displaywidowpenalty = 10000 %Gegen Schusterjungen und Hurenkinder
+
+
+\usepackage{chngcntr} % Dient zur durchlaufenden Nummerierung der Abbildungen. Der Standard von scrreport ist [Chapter].[Nummer]
+\counterwithout{figure}{chapter}
+\counterwithout{table}{chapter}
+
+
+\usepackage{remreset} %Dient dazu, die Fussnoten im kpl. Dokument durchnummerieren zu können. Ansonsten fangen sie bei jedem Chapter wieder bei 1 an.
+\makeatletter
+\@removefromreset{footnote}{chapter}
+\makeatother
+
+
+\hypersetup{ %Alle URLS schwarz färben
+	colorlinks,%
+	citecolor=black,%
+	filecolor=black,%
+	linkcolor=black,%
+	urlcolor=black
+}
+
+\renewcommand{\harvardurl}[1]{\small{\url{#1}}}
+\renewcommand{\dictumwidth}{0.6\textwidth} % Ändert die Breite des Zitats direkt nach der Titelseite.
+\setkomafont{dictum}{\rmfamily \large} %Serifentext und Größefür das Zitat
+
+
+\KOMAoptions{cleardoublepage=empty}
+% Zeugs am Anfang: Titel, Abstract, Absichtserklärung, Inhaltsverzeichnis, Abbildungsverzeichnis.
+% ********************************************************************
+\begin{document}
+\shorthandoff{"} % Verhindert, dass Anführungszeichen nach einem Vokal schief laufen.
+\pagestyle{empty}
+
+ \include{Frontmatter/Title}
+
+\cleardoublepage
+
+\input{Frontmatter/Cite} %Zitat zu Beginn
+
+\pagestyle{plain}
+ \include{Frontmatter/Abstract}
+ \cleardoublepage
+\pagenumbering{roman}
+\KOMAoptions{cleardoublepage=plain}
+ \input{Frontmatter/Erklaerung}
+ \cleardoublepage
+
+\tableofcontents % Inhaltsverzeichnis
+
+\listoffigures % Abbildungsverzeichnis
+
+\listoftables % Tabellenverzeichnis
+
+\cleardoublepage
+
+% Hauptinhalt; unterteilt in einzelne Kapitel; entsprechend auch einzelne Dateien.
+% ********************************************************************
+\pagenumbering{arabic}
+\pagestyle{headings} % Kopfzeile mit lebendem Kolumnentitel
+\parskip0.7ex % Abstand nach einem Absatz.
+\include{00_Kapitel/1-einleitung}
+\include{00_Kapitel/2-grundlagen}
+
+
+% Appendix für Grafiken und Evaluationsfragen etc.
+% ********************************************************************
+ \appendix
+  \include{Backmatter/0A}
+  \include{Backmatter/1A}
+  \include{Backmatter/2A}
+
+
+
+% Literaturverzeichnis
+% ********************************************************************
+
+\bibliographystyle{dcu_url}
+\clearpage
+\addcontentsline{toc}{chapter}{Literaturverzeichnis}
+\bibliography{Literatursammlung} %BibTeX-Literaturdatei
+
+% \addcontentsline{toc}{chapter}{Index}
+% \printindex
+\end{document}

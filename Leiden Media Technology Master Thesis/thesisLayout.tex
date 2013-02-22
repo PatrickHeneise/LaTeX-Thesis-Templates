@@ -1,0 +1,116 @@
+% **************************************************************************************************************
+% Thesis-Template Media Technology
+%
+% Copyright (C) 2011 Patrick Heneise
+% **************************************************************************************************************
+% PRINT: \documentclass[a4paper,twoside,openright,numbers=noenddot,cleardoublepage=plain]{scrreprt}
+%\documentclass[11pt,a4paper,english,DIV10,twocolumn]{scrartcl}
+\documentclass[11pt,a4paper,english]{scrartcl}
+%\addtokomafont{disposition}{\rmfamily}
+
+% Packages
+% ********************************************************************
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+% \renewcommand*\familydefault{\sfdefault} %% Only if the base font of the document is to be sans serif
+
+% Screen
+\renewcommand*{\familydefault}{\sfdefault}
+
+\usepackage[english]{babel}
+\usepackage[pdftex]{graphicx}
+\usepackage{xcolor}
+\usepackage[hyphens]{url}
+\usepackage{harvard}
+\bibliographystyle{dcu}
+\usepackage{color,listings}
+\lstset{showspaces=false,breaklines=true,breakindent=0pt, tabsize=1}
+\usepackage{hyperref}
+\usepackage[final]{pdfpages}
+\pdfinfo
+{ /Title (Your Awesome Title)
+  /Author (Your Name)
+  /CreationDate (D:20110831120000) % this is the format used by pdf for date/time
+  /Subject (Graduation Project 20XX, Leiden University, Prof. A, Prof. B)
+  /Keywords (Leiden)
+}
+\usepackage{setspace}
+\singlespacing
+\makeindex
+
+\hypersetup{
+	colorlinks,%
+	citecolor=black,%
+	filecolor=black,%
+	linkcolor=black,%
+	urlcolor=black
+}
+
+\makeatletter
+\newcommand\ackname{Acknowledgements}
+\if@titlepage
+  \newenvironment{acknowledgements}{%
+      \titlepage
+      \null\vfil
+      \@beginparpenalty\@lowpenalty
+      \begin{center}%
+        \bfseries \ackname
+        \@endparpenalty\@M
+      \end{center}}%
+     {\par\vfil\null\endtitlepage}
+\else
+  \newenvironment{acknowledgements}{%
+      \if@twocolumn
+        \section*{Acknowledgements}%
+      \else
+        \small
+        \begin{center}%
+          {\bfseries \ackname\vspace{-.5em}\vspace{\z@}}%
+        \end{center}%
+        \quotation
+      \fi}
+      {\if@twocolumn\else\endquotation\fi}
+\fi
+\makeatother
+
+\renewcommand{\harvardurl}[1]{\small{\url{#1}}}
+
+% Intro
+% ********************************************************************
+\begin{document}
+\selectlanguage{english}
+
+\titlehead{Leiden Institute of Advanced Computer Science (LIACS), Media Technology}
+\title{\Large{Your Awesome Title}}
+\subtitle{\small{Graduation Research Project 2011, Leiden University\\Dr. A, Dr. B}}
+\author{\small{Your Name yname@liacs.nl}}
+\date{\small{\today}}
+\maketitle
+
+\begin{abstract}
+Abstract.
+\\[1cm]
+Keywords: Leiden
+\end{abstract} 
+
+\begin{acknowledgements}
+I would like to thank my supervisors, ...
+\end{acknowledgements}
+
+% Main
+% ********************************************************************
+\input{thesisContent}
+
+% Appendix
+% ********************************************************************
+\clearpage
+\appendix
+\section{Some Appendix}\label{app:a}
+\clearpage
+
+\addcontentsline{toc}{section}{References}
+\bibliography{bibliography.bib}
+
+% END
+% ********************************************************************
+\end{document}

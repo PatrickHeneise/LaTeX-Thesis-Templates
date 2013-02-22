@@ -1,11 +1,11 @@
 LaTeX-Leiden-University
 =======================
 
-A repository of LaTeX templates for Leiden University / Universiteit Leiden.
+A repository of LaTeX templates for theses.
 
 
-History MA Thesis
------------------
+Leiden History Master Thesis
+----------------------------
 
 Compiles on latest MacTeX 2012 with [biber](http://biblatex-biber.sourceforge.net) installed. It uses chicaco style citations in footnotes. The first mention to a citation is always a full citation, following citations are only the author name and the number to the full citation. This can be easily changed to Ibit. and Ibidem. by using verbose-ibid option instead of verbose-note. Have a look at p.73, [biblatex]([ftp://www.ctan.org/ctan/macros/latex/exptl/biblatex/doc/biblatex.pdf)
 
@@ -16,10 +16,20 @@ To create the index for nomenclature, use this command:
 
 `makeindex Thesis.nlo -s nomencl.ist -o Thesis.nls`
 
+Furtwangen Digitale Medien Bachelor Thesis
+------------------------------------------
+Contributed by [Martin Weber](https://twitter.com/web_martin) for Furtwangen University Digital Media students.
+
+
+Leiden Media Technology Master Thesis
+-------------------------------------
+
+Simple thesis template for the Media Technology master at Leiden University.
+
 
 Contribute
 ----------
-Feel free to [fork](https://github.com/PatrickHeneise/LaTeX-Leiden-University/fork_select) and add more templates for other students to use or modifications of the History template.
+Feel free to [fork](https://github.com/PatrickHeneise/LaTeX-Thesis-Templates/fork_select) and add more templates for other students to use or modifications of the History template.
 
 
 License
